@@ -1,0 +1,50 @@
+% This file is temporarily a plain .ltx file. See the issue tracker for more info.
+
+\documentclass[a4paper, 11pt, twoside]{article}
+\usepackage{ifthen}
+\usepackage{parskip}
+\usepackage{eukdate}
+\usepackage{fullpage}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{float}
+%\usepackage{lilygliphs}
+
+\newfloat{recinfo}{h}
+\setlength{\parindent}{20pt}
+\setlength{\headheight}{15pt}
+\setlength{\columnsep}{20pt}
+
+\newcommand{\emdash}[0]{\textemdash}
+\newcommand{\andnofmt}[0]{\textnormal{and}}
+\newcommand{\dashnofmt}[0]{\textnormal{-}}
+
+\newcommand{\mddot}[0]{\textmd{.}}
+\newcommand{\dothand}[0]{{\mddot}{\textbf{H}}{\mddot}}
+\newcommand{\lh}[0]{L.H.}
+\newcommand{\rh}[0]{R.H.}
+\newcommand{\lhb}[0]{{\textbf{L}}{\dothand}}
+\newcommand{\rhb}[0]{{\textbf{R}}{\dothand}}
+\newcommand{\bhb}[0]{{\lhb} {\textmd{and}} {\rhb}}
+
+\newcommand{\fromto}[2]{#1{\dashnofmt}#2}
+
+\newcommand{\octve}[0]{8ve}
+\newcommand{\tremelo}[0]{\musterm{tremelo}}
+\newcommand{\quasi}[0]{\musterm{quasi}}
+
+\newcommand{\done}[0]{{\emdash} {\textbf{done}}}
+\newcommand{\musterm}[1]{\textit{#1}}
+\newcommand{\musnotes}[1]{\musterm{#1}}
+
+\newcommand{\musloc}[3]{\textbf{b.#1}, 
+{\ifthenelse{\equal{#2}{r}}%
+	{\rhb}%
+	{\ifthenelse{\equal{#2}{l}}%
+		{\lhb}{\bhb}}}%
+		{\ifthenelse{\equal{#3}{}}%
+			{}%
+			{ beat(s) \textbf{#3}}}}%
+\newcommand{\muscmt}[4]{\noindent{\musloc{#1}{#2}{#3}} {\hfill} \\ \indent{#4} \\}
+% not needed unless more than 1 issue
+\newcommand{\issues}[3]{#1; #2; #3}
